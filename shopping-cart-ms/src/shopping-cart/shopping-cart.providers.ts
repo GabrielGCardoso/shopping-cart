@@ -1,6 +1,6 @@
 import { Connection, Repository } from 'typeorm';
-import { ShoppingCart } from './shopping-cart.entity';
-import { Product } from './product.entity';
+import { ShoppingCart } from './shopping-cart/shopping-cart.entity';
+import { Product } from './product/product.entity';
 
 export const ShoppingCartProviders = [
     {

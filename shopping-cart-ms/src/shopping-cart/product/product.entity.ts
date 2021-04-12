@@ -1,5 +1,5 @@
 import { Column, Entity, Unique, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { ShoppingCart } from './shopping-cart.entity'
+import { ShoppingCart } from '../shopping-cart/shopping-cart.entity'
 
 @Entity()
 @Unique("shopping_cart_constrain", ["productId", "shoppingCartId"])
