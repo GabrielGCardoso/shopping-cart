@@ -1,0 +1,1 @@
+docker exec -i mysql  mysql -uroot -pserver -e 'create database test'
