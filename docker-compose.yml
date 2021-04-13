@@ -1,6 +1,15 @@
 version: '3'
 services:
 
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: p1c4d1nh0
+    ports:
+      - 27017:27017
+
   mysql:
     image: mysql
     container_name: mysql
@@ -17,7 +26,7 @@ services:
       context: products-ms
       dockerfile: Dockerfile
     depends_on:
-      - mysql
+      - mongo
     environment:
       NODE_ENV: DOCKER
       NODE_PORT: '3002'
@@ -31,6 +40,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mysql
+      - products-ms
     environment:
       NODE_ENV: DOCKER
       NODE_PORT: '3001'
