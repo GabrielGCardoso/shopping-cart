@@ -1,16 +1,9 @@
-import { Module, HttpModule, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
-// import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-// import { ProjectsController } from './projects/projects.controller';
-// import { ProjectsService } from './projects/projects.service';
-import { AppService } from './app.service';
-import { ProjectsModule } from './projects/projects.module';
+import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { AuthMiddleware } from './middlewares/authMiddleware/auth.middleware';
+import { ProductsModule } from './products/products.module';
 
 @Module({
-  imports: [ProjectsModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ProductsModule],
 })
 export class AppModule implements NestModule {
   configure(userContext: MiddlewareConsumer) {
