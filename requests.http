@@ -1,0 +1,62 @@
+###Creating a shpping-cart
+POST http://localhost:3000/shopping-cart HTTP/1.1
+content-type: application/json
+
+{
+    "user_id":1
+}
+
+###list shopping cart
+GET http://localhost:3000/shopping-cart HTTP/1.1
+content-type: application/json
+
+###find one
+GET http://localhost:3000/shopping-cart/1 HTTP/1.1
+content-type: application/json
+
+### delete shopping cart
+DELETE http://localhost:3000/shopping-cart/1 HTTP/1.1
+content-type: application/json
+
+### add product on shopping cart
+POST http://localhost:3000/shopping-cart/1/product HTTP/1.1
+content-type: application/json
+
+{
+    "product_id":"77fc132f-cfa1-4212-a800-5617018e092a"
+}
+
+### remove from shopping cart
+DELETE http://localhost:3000/shopping-cart/1/product/2 HTTP/1.1
+content-type: application/json
+
+### Get all products
+GET http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+### Create a product
+POST http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "name":"wifi2",
+    "qtd": 1,
+    "price":3.33
+}
+
+### remove a product
+DELETE http://localhost:3000/products/3595d1cf-34ce-4e36-bb72-3689227554ef HTTP/1.1
+content-type: application/json
+
+### find one product
+GET http://localhost:3000/products/2b6cae8d-646e-46b1-9448-ab06b14ba90e HTTP/1.1
+content-type: application/json
+
+### update product
+PATCH http://localhost:3000/products/3007c153-3673-4768-89e1-79fcd30a5bc8 HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Iphone",
+    "price":107399.33
+}
