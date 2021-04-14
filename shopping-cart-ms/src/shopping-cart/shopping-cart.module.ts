@@ -6,7 +6,7 @@ import { ShoppingCartController } from './shopping-cart/shopping-cart.controller
 import { ProductService } from './product/product.service';
 
 @Module({
-  imports: [DatabaseModule, HttpModule],
+  imports: [DatabaseModule],
   providers: [...ShoppingCartProviders, ShoppingCartService, ProductService],
   controllers: [ShoppingCartController]
 })

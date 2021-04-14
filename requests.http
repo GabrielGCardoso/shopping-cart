@@ -27,7 +27,7 @@ content-type: application/json
 }
 
 ### remove from shopping cart
-DELETE http://localhost:3000/shopping-cart/1/product/2 HTTP/1.1
+DELETE http://localhost:3000/shopping-cart/1/product/77fc132f-cfa1-4212-a800-5617018e092a HTTP/1.1
 content-type: application/json
 
 ### Get all products
