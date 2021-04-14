@@ -1,5 +1,8 @@
 FROM node:14.15.4-alpine
 
+ENV HOME=/usr/src
+WORKDIR ${HOME}/app
+
 COPY ["./", "${HOME}/app/"]
 
 RUN npm install --silent --progress=false --production
