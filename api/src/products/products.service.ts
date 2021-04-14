@@ -12,29 +12,43 @@ console.log(config.shoppingCartMs.host)
 export class ProductsService {
   baseUrl: string;
   constructor(private readonly httpService: HttpService) {
-    this.baseUrl = config.shoppingCartMs.host;
+    this.baseUrl = config.productsMs.host;
   }
 
-  create(createProductDto) {
-    return this.httpService.post(`${this.baseUrl}/products`, createProductDto);
-  }
-
-  findAll(): Observable<AxiosResponse<any>> {
-    return this.httpService.get(`${this.baseUrl}/products`)
+  async create(createProductDto) {
+    return await this.httpService.post(`${this.baseUrl}/products`, createProductDto)
       .pipe(
         map(response => response.data)
       );
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  async findAll() {
+    const products = await this.httpService.get(`${this.baseUrl}/products`)
+      .pipe(
+        map(response => response.data)
+      )
+    return products;
+    // products.map(produtos)
   }
 
-  update(id: number, updateProductDto) {
-    return `This action updates a #${id} product`;
+  findOne(id: string) {
+    return this.httpService.get(`${this.baseUrl}/products/${id}`)
+      .pipe(
+        map(response => response.data)
+      );
   }
 
-  remove(id: number) {
-    return this.httpService.delete(`${this.baseUrl}/products/${id}`);
+  update(id: string, updateProductDto) {
+    return this.httpService.patch(`${this.baseUrl}/products/${id}`, updateProductDto)
+      .pipe(
+        map(response => response.data)
+      );
+  }
+
+  remove(id: string) {
+    return this.httpService.delete(`${this.baseUrl}/products/${id}`)
+      .pipe(
+        map(response => response.data)
+      );
   }
 }
