@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
-// import { Product } from '../product/product.entity';
 import { ShoppingCart } from './shopping-cart.entity'
 import { ProductService } from '../product/product.service';
 
@@ -18,7 +17,14 @@ export class ShoppingCartService {
     }
 
     async findOne(cartId: number) {
-        return this.shoppingCartRepository.findOne({ relations: ['products'], where: { shoppingCartId: cartId } });
+        const cart = await this.shoppingCartRepository.findOne({ relations: ['products'], where: { shoppingCartId: cartId } })
+        let productPromises = cart.products.map(async product => {
+            const { name, price } = await this.productService.getProduct(product)
+            return { ...product, name, price }
+        })
+        const products = await Promise.all(productPromises);
+        const { shoppingCartId, userId } = cart;
+        return { shoppingCartId, userId, products };
     }
 
     async create(shoppingCartData) {
