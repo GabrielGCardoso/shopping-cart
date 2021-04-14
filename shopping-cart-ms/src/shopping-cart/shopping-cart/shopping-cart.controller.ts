@@ -16,8 +16,8 @@ export class ShoppingCartController {
     }
 
     @Delete(':cartId/product/:productId')
-    remove(@Param('cartId') cartId: number, @Param('productId') productId: number) {
-        return this.shoppingCartService.removeProductFromShoppingCart(+cartId, +productId);
+    remove(@Param('cartId') cartId: number, @Param('productId') productId: string) {
+        return this.shoppingCartService.removeProductFromShoppingCart(+cartId, productId);
     }
 
     @Post()
