@@ -17,7 +17,7 @@ export class ShoppingCartService {
         return this.shoppingCartRepository.find({ relations: ['products'] });
     }
 
-    async findOne(cartId: number): Promise<ShoppingCart> {
+    async findOne(cartId: number) {
         return this.shoppingCartRepository.findOne({ relations: ['products'], where: { shoppingCartId: cartId } });
     }
 
@@ -28,7 +28,7 @@ export class ShoppingCartService {
         return this.shoppingCartRepository.save(shoppingCart);
     }
 
-    async removeProductFromShoppingCart(shoppingCartId: number, productId: number) {
+    async removeProductFromShoppingCart(shoppingCartId: number, productId: string) {
         return this.productService.removeProductFromShoppingCart(shoppingCartId, productId);
     }
 

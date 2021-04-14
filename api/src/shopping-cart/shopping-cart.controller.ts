@@ -22,12 +22,17 @@ export class ShoppingCartController {
 
   @Delete(':id/product/:productId')
   removeProduct(@Param('id') id: string, @Param('productId') productId: string) {
-    return this.shoppingCartService.removeProduct(+id, +productId);
+    return this.shoppingCartService.removeProduct(+id, productId);
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.shoppingCartService.findOne(+id);
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.shoppingCartService.findOne(+id);
+  }
+
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.shoppingCartService.deleteShoppingCart(+id);
   // }
 
   // @Patch(':id')
@@ -35,8 +40,4 @@ export class ShoppingCartController {
   //   return this.shoppingCartService.update(+id, updateShoppingCartDto);
   // }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.shoppingCartService.remove(+id);
-  // }
 }

@@ -29,6 +29,12 @@ export class ShoppingCartService {
       );
   }
 
+  findOne(id: number) {
+    return this.httpService.get(`${this.baseUrl}/shopping-cart/${id}`)
+      .pipe(
+        map(response => response.data)
+      );
+  }
 
   addProduct(cartId: number, productDt) {
     return this.httpService.post(`${this.baseUrl}/shopping-cart/${cartId}/product`, productDt)
@@ -37,8 +43,15 @@ export class ShoppingCartService {
       );
   }
 
-  removeProduct(id: number, productId) {
+  removeProduct(id: number, productId: string) {
     return this.httpService.delete(`${this.baseUrl}/shopping-cart/${id}/product/${productId}`)
+      .pipe(
+        map(response => response.data)
+      );
+  }
+
+  deleteShoppingCart(id: number) {
+    return this.httpService.delete(`${this.baseUrl}/shopping-cart/${id}`)
       .pipe(
         map(response => response.data)
       );
@@ -58,12 +71,6 @@ export class ShoppingCartService {
   //     );
   // }
 
-  // remove(id: number) {
-  //   return this.httpService.delete(`${this.baseUrl}/shopping-cart/${id}`)
-  //     .pipe(
-  //       map(response => response.data)
-  //     );
-  // }
 
 
 }

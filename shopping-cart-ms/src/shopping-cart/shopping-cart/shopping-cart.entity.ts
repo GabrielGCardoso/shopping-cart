@@ -2,7 +2,6 @@ import { Entity, Unique, Column, PrimaryGeneratedColumn, Index, OneToMany } from
 import { Product } from '../product/product.entity';
 
 @Entity()
-@Unique(["userId"]) // one field
 export class ShoppingCart {
     @PrimaryGeneratedColumn()
     shoppingCartId: number;
