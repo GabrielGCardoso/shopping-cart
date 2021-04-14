@@ -5,5 +5,5 @@ export default () => ({
         port: 27017,
         username: 'admin',
         password: 'p1c4d1nh0',
-    }
+    },
 });
